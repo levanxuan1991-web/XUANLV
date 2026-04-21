@@ -1,0 +1,249 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Snow Effect */
+.snow-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.snowflake {
+  position: absolute;
+  top: -10px;
+  color: white;
+  font-size: 1em;
+  user-select: none;
+  z-index: 10;
+  animation-name: snowfall;
+  animation-linear: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(-10px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(var(--drift)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Theme Overrides for Readability */
+.theme-colored, .dark-mode-content {
+  color: #ffffff !important;
+  color-scheme: dark; /* Ensures native UI elements like scrollbars and dropdowns are dark */
+}
+
+.theme-colored h1, .theme-colored h2, .theme-colored h3, .theme-colored h4,
+.dark-mode-content h1, .dark-mode-content h2, .dark-mode-content h3, .dark-mode-content h4 {
+  color: #ffffff !important;
+}
+
+.theme-colored p, .theme-colored span, .theme-colored label,
+.dark-mode-content p, .dark-mode-content span, .dark-mode-content label {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Force white text for blue elements in colored/dark themes */
+.theme-colored .text-blue-600, .theme-colored .text-blue-700, .theme-colored .text-blue-800, .theme-colored .text-blue-900,
+.dark-mode-content .text-blue-600, .dark-mode-content .text-blue-700, .dark-mode-content .text-blue-800, .dark-mode-content .text-blue-900,
+.theme-colored .text-slate-700, .theme-colored .text-slate-800, .theme-colored .text-slate-900,
+.dark-mode-content .text-slate-700, .dark-mode-content .text-slate-800, .dark-mode-content .text-slate-900,
+.theme-colored .text-gray-400, .theme-colored .text-gray-500, .theme-colored .text-gray-600, .theme-colored .text-gray-700, .theme-colored .text-gray-800, .theme-colored .text-gray-900,
+.dark-mode-content .text-gray-400, .dark-mode-content .text-gray-500, .dark-mode-content .text-gray-600, .dark-mode-content .text-gray-700, .dark-mode-content .text-gray-800, .dark-mode-content .text-gray-900 {
+  color: #ffffff !important;
+}
+
+/* Background overrides for cards and sections in colored/dark themes */
+.theme-colored .bg-white, .dark-mode-content .bg-white,
+.theme-colored .bg-gray-50, .dark-mode-content .bg-gray-50,
+.theme-colored .bg-slate-50, .dark-mode-content .bg-slate-50,
+.theme-colored .bg-gray-100, .dark-mode-content .bg-gray-100,
+.theme-colored .bg-slate-100, .dark-mode-content .bg-slate-100,
+.theme-colored .bg-blue-50, .dark-mode-content .bg-blue-50,
+.theme-colored .bg-blue-100, .dark-mode-content .bg-blue-100 {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(12px);
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Input fields in colored/dark themes */
+.theme-colored input, .theme-colored select, .theme-colored textarea,
+.dark-mode-content input, .dark-mode-content select, .dark-mode-content textarea {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  color-scheme: dark; /* Tells the browser to use dark-themed native UI elements */
+}
+
+/* Remove small background boxes from inputs inside tables for a cleaner look */
+.theme-colored table input, .dark-mode-content table input {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+.theme-colored table input:focus, .dark-mode-content table input:focus {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.theme-colored select option, .dark-mode-content select option {
+  background-color: #1e293b !important; /* Dark slate background for options */
+  color: #ffffff !important;
+}
+
+.theme-colored input::placeholder, .dark-mode-content input::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Specific component fixes */
+.theme-colored .border-gray-200, .dark-mode-content .border-gray-200,
+.theme-colored .border-blue-100, .dark-mode-content .border-blue-100 {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.theme-colored .from-blue-600, .dark-mode-content .from-blue-600,
+.theme-colored .to-blue-800, .dark-mode-content .to-blue-800 {
+  --tw-gradient-from: rgba(255, 255, 255, 0.2) !important;
+  --tw-gradient-to: rgba(255, 255, 255, 0.1) !important;
+}
+
+.theme-colored .bg-blue-700, .dark-mode-content .bg-blue-700,
+.theme-colored .bg-blue-500, .dark-mode-content .bg-blue-500 {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Light Theme Specifics (Original) */
+.theme-light-content {
+  background-color: #f1f5f9 !important;
+  color: #0f172a; /* Slate 900 */
+}
+
+.theme-light-content h1, .theme-light-content h2, .theme-light-content h3, .theme-light-content h4 {
+  color: #1e40af; /* Blue 800 for headers */
+}
+
+.theme-light-content label, .theme-light-content p, .theme-light-content span {
+  color: #334155; /* Slate 700 for regular text */
+}
+
+/* Snowfall visibility */
+.snowfall-container {
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Specific Dark Mode Overrides (Higher priority) */
+.bg-slate-900.theme-colored {
+  background-color: #0f172a !important;
+}
+
+.bg-slate-900.theme-colored .bg-white,
+.bg-slate-900.theme-colored .bg-slate-50,
+.bg-slate-900.theme-colored .bg-gray-50 {
+  background-color: #1e293b !important;
+}
+
+.dark-mode-card {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+  border-color: rgba(51, 65, 85, 0.5) !important;
+  color: #ffffff !important;
+}
+
+.dark-mode-content {
+  color: #ffffff !important;
+}
+
+.dark-mode-input:focus {
+  border-color: #3b82f6 !important;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+.dark-mode-text-muted {
+  color: #94a3b8 !important; /* Slate 400 */
+}
+
+.dark-mode-label {
+  color: #e2e8f0 !important; /* Slate 200 */
+  font-weight: 500;
+}
+
+/* Theme Backgrounds */
+.bg-theme-blue {
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+}
+
+.bg-theme-emerald {
+  background: linear-gradient(135deg, #064e3b 0%, #059669 100%);
+}
+
+.bg-theme-rose {
+  background: linear-gradient(135deg, #881337 0%, #db2777 100%);
+}
+
+.bg-theme-amber {
+  background: linear-gradient(135deg, #78350f 0%, #d97706 100%);
+}
+
+.bg-theme-indigo {
+  background: linear-gradient(135deg, #312e81 0%, #4f46e5 100%);
+}
+
+.bg-theme-festive {
+  background: url('https://images.unsplash.com/photo-1543508282-6319a3e2621f?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+  position: relative;
+}
+
+.bg-theme-festive::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 0;
+}
+
+/* Specific overrides for Results Tab */
+.theme-light-content .force-white-text,
+.theme-light-content .force-white-text label,
+.theme-light-content .force-white-text span,
+.theme-light-content .force-white-text div {
+  color: #ffffff !important;
+}
